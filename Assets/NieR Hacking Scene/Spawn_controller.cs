@@ -65,6 +65,7 @@ public class Spawn_controller : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         core_script = enemycore.GetComponent<Core_controller>();
+		text.text = "";
     }
 	
 	// Update is called once per frame
