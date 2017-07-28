@@ -24,6 +24,18 @@ public class Spawn_controller : MonoBehaviour {
         GameObject _9S = GameObject.Find("9S");
         _9S_controller _9Sscript = _9S.GetComponent<_9S_controller>();
         _9Sscript.enabled = false;
+
+        //cleaning bullets
+        GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("bullets");
+        CleanGameObjects (playerBullets);
+        GameObject[] redBullets = GameObject.FindGameObjectsWithTag("red_bullets");
+        CleanGameObjects (redBullets);
+        GameObject[] darkBullets = GameObject.FindGameObjectsWithTag ("dark_bullets");
+        CleanGameObjects (darkBullets);
+
+
+
+
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(2f);
         lvl++;
@@ -33,12 +45,19 @@ public class Spawn_controller : MonoBehaviour {
         Time.timeScale = 1;
         _9Sscript.enabled = true;
         text.text = "";
-
+    }
+        
+    public void CleanGameObjects(GameObject[] objs){
+        if (objs.Length != 0) {
+            foreach (GameObject obj in objs) {
+                Destroy (obj);
+            }
+        }
     }
 
     public void start_spawning() {
-        enemycore.SetActive(true);
-        core_script.hp = 100; 
+        core_script.resetCore();
+        enemycore.SetActive(true);  
         enemy_number = (int)Mathf.Log(lvl) + 1;
         usedspawnpoints = new int[spawnpoints.Length];
         for (int i = 0; i < usedspawnpoints.Length; i++)

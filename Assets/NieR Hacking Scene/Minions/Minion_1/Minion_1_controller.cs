@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Minion_1_controller : MonoBehaviour {
-    public GameObject projectile;
-    public float firerate;
-    float nextfire;
-    float hp;
+
+public class Minion_1_controller : MonoBehaviour{
+	public GameObject projectile;
+	public float firerate;
+	float nextfire;
+	float hp;
 	// Use this for initialization
 	void Start () {
         nextfire = 0;
